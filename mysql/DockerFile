@@ -1,0 +1,9 @@
+FROM mysql:8.0
+
+ENV MYSQL_ROOT_PASSWORD=rootpass
+ENV MYSQL_DATABASE=currencydb
+ENV MYSQL_USER=currency_user
+ENV MYSQL_PASSWORD=currency_pass
+
+# initialize DB on first run
+COPY init.sql /docker-entrypoint-initdb.d/

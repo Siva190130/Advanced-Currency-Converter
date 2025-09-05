@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  mysql:
+    build: ./mysql
+    container_name: currency-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: currencydb
+      MYSQL_USER: currency_user
+      MYSQL_PASSWORD: currency_pass
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+
+  app:
+    build: ./app
+    container_name: currency-app
+    depends_on:
+      - mysql
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USER: currency_user
+      DB_PASS: currency_pass
+    ports:
+      - "8080:8080"
+
+volumes:
+  mysql_data:

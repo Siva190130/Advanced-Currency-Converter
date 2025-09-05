@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+  <welcome-file-list>
+    <welcome-file>home.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>CurrencyServlet</servlet-name>
+    <servlet-class>controller.CurrencyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CurrencyServlet</servlet-name>
+    <url-pattern>/currency</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ManageExchangeRatesServlet</servlet-name>
+    <servlet-class>controller.ManageExchangeRatesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ManageExchangeRatesServlet</servlet-name>
+    <url-pattern>/exchangeRate</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>CurrencyConversionServlet</servlet-name>
+    <servlet-class>controller.CurrencyConversionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CurrencyConversionServlet</servlet-name>
+    <url-pattern>/convert</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>RegisterServlet</servlet-name>
+    <servlet-class>controller.RegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegisterServlet</servlet-name>
+    <url-pattern>/RegisterServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>controller.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>CurrencyUpdateServlet</servlet-name>
+    <servlet-class>controller.CurrencyUpdateServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>CurrencyUpdateServlet</servlet-name>
+    <url-pattern>/update-currencies</url-pattern>
+</servlet-mapping>
+  
+</web-app>
