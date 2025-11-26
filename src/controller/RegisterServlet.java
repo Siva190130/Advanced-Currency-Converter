@@ -8,6 +8,7 @@ import javax.servlet.http.*;
 import java.io.IOException;
 import java.util.regex.Pattern;
 
+@SuppressWarnings("serial")
 public class RegisterServlet extends HttpServlet {
     private UserDAO userDAO;
 

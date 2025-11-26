@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+@SuppressWarnings("serial")
 public class CurrencyServlet extends HttpServlet {
 
     private CurrencyDAO currencyDAO;

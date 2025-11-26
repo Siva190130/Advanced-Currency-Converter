@@ -4,11 +4,11 @@ import dao.UserDAO;
 import model.User;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 
 
+@SuppressWarnings("serial")
 public class LoginServlet extends HttpServlet {
     private UserDAO userDAO;
 

@@ -2,7 +2,6 @@ package controller;
 
 import dao.CurrencyDAO;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -10,6 +9,7 @@ import java.net.URL;
 import java.util.*;
 import org.json.JSONObject;
 
+@SuppressWarnings("serial")
 public class CurrencyUpdateServlet extends HttpServlet {
 
     private CurrencyDAO currencyDAO;
