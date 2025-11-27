@@ -175,13 +175,14 @@
         }
 
         // email basic pattern
-        if (!/^[\\w.-]+@[\\w.-]+\\.[A-Za-z]{2,6}$/.test(e)) {
+        // NOTE: use single backslash sequences in regex literals (\w, \d)
+        if (!/^[\w.\-]+@[\w.\-]+\.[A-Za-z]{2,6}$/.test(e)) {
             emailError.textContent = "Invalid email format.";
             valid = false;
         }
 
         // password: min 6, at least one letter and one number
-        if (p.length < 6 || !/\\d/.test(p) || !/[A-Za-z]/.test(p)) {
+        if (p.length < 6 || !/\d/.test(p) || !/[A-Za-z]/.test(p)) {
             passwordError.textContent = "Min 6 chars, must contain letters & numbers.";
             valid = false;
         }
@@ -212,9 +213,9 @@
     confirmPwd.addEventListener('input', () => { if (confirmError.textContent) validateAll(); });
 
     // Server-side messages -> toasts
-    // NOTE: JSP expressions below render server values (no escaping). If your editor escapes, remove the backslashes.
-    const serverMessage = "<%= (request.getAttribute("message") + "").replace("\"", "\\\"") %>";
-    const serverError   = "<%= (request.getAttribute("error") + "").replace("\"", "\\\"") %>";
+    // Use single-quoted JS strings and escape any single quotes coming from server
+    const serverMessage = '<%= String.valueOf(request.getAttribute("message") == null ? "" : request.getAttribute("message")).replace("'", "\\'") %>';
+    const serverError   = '<%= String.valueOf(request.getAttribute("error")   == null ? "" : request.getAttribute("error")).replace("'", "\\'") %>';
 
     if (serverMessage && serverMessage.trim().length > 0) {
         document.getElementById('serverSuccessBody').textContent = serverMessage;
