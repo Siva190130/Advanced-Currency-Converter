@@ -1,36 +1,28 @@
 version: "3.8"
 
 services:
+
   mysql:
-    build: ./mysql
+    image: mysql:8.0
     container_name: currency-mysql
+    restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: currencydb
-      MYSQL_USER: currency_user
-      MYSQL_PASSWORD: currency_pass
     ports:
       - "3307:3306"
     volumes:
-      - mysql_data:/var/lib/mysql
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      interval: 5s
-      timeout: 3s
-      retries: 30
+      - mysql-data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
   app:
-    build: ./app
+    build: .
     container_name: currency-app
-    depends_on:
-      - mysql
-    environment:
-      DB_HOST: mysql
-      DB_PORT: 3306
-      DB_USER: currency_user
-      DB_PASS: currency_pass
+    restart: always
     ports:
       - "8080:8080"
+    depends_on:
+      - mysql
 
 volumes:
-  mysql_data:
+  mysql-data:
