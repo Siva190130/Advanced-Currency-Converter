@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: currency-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: currency-app
+  template:
+    metadata:
+      labels:
+        app: currency-app
+    spec:
+      containers:
+        - name: currency-app
+          image: siva190130/currency-app:1.0
+          ports:
+            - containerPort: 8080
